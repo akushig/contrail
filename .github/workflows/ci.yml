@@ -14,7 +14,15 @@ jobs:
           node-version: 20
           cache: 'npm'
       - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm run test --if-present
-      - run: npm run build
+      - name: Install workspace dependencies
+        run: |
+          cd apps/web && npm ci
+          cd ../api && npm ci
+      - name: Lint
+        run: cd apps/web && npm run lint --if-present
+      - name: Typecheck
+        run: cd apps/web && npm run typecheck --if-present
+      - name: Test
+        run: cd apps/web && npm run test --if-present
+      - name: Build
+        run: cd apps/web && npm run build
