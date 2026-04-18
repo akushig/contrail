@@ -16,8 +16,8 @@ jobs:
       - run: npm ci
       - name: Install workspace dependencies
         run: |
-          cd apps/web && npm ci
-          cd ../api && npm ci
+          cd apps/web && npm install
+          cd ../api && npm install
       - name: Lint
         run: cd apps/web && npm run lint --if-present
       - name: Typecheck
