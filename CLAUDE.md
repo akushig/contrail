@@ -49,6 +49,7 @@ cp .env.example .env.local
 - 기능 개발: `feature/기능명` 브랜치에서 작업 후 PR → main 머지
 - 버그 수정: `fix/버그명` 브랜치에서 작업 후 PR → main 머지
 - 직접 main에 푸시 금지, 반드시 PR을 통해 머지
+- 커밋 메시지는 한글로 작성
 
 ## 코드 작성 규칙
 
