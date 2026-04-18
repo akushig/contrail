@@ -49,3 +49,23 @@ cp .env.example .env.local
 - 기능 개발: `feature/기능명` 브랜치에서 작업 후 PR → main 머지
 - 버그 수정: `fix/버그명` 브랜치에서 작업 후 PR → main 머지
 - 직접 main에 푸시 금지, 반드시 PR을 통해 머지
+
+## 코드 작성 규칙
+
+### TDD (테스트 주도 개발)
+1. 테스트 코드 먼저 작성 (Red)
+2. 테스트 통과하는 최소 코드 작성 (Green)
+3. 리팩토링 (Refactor)
+- 새 기능/버그 수정 시 반드시 테스트부터 작성
+
+### DDD + 클린 아키텍처
+```
+src/
+  domain/        # 엔티티, 값 객체, 도메인 서비스 (비즈니스 로직)
+  application/   # 유스케이스, 애플리케이션 서비스
+  infrastructure/ # DB, 외부 API, 프레임워크 구현체
+  presentation/  # 컨트롤러, API 라우트
+```
+- 의존성 방향: presentation → application → domain ← infrastructure
+- domain은 외부 의존성 없이 순수 비즈니스 로직만
+- infrastructure는 domain 인터페이스를 구현
